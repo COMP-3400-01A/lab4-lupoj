@@ -11,16 +11,13 @@ int main(int argc, const char* argv[]) {
 
     // If there are already arguments, copy it to the text array
     // Else, take user input and copy it to the text array
-    if (argc > 1) {
-        strncpy(text, argv[1], sizeof(text) - 1);
-        text[sizeof(text) - 1] = '\0';
+    if (argc <= 1) {
+        printf("ERROR: No arguments\n");
+        return 1;
+    }
 
-    }
-    else {
-        printf("Enter: ");
-        fgets(text, sizeof(text), stdin);
-        text[strcspn(text, "\n")] = '\0';
-    }
+    strncpy(text, argv[1], sizeof(text) - 1);
+    text[sizeof(text) - 1] = '\0';
 
     // Iterate through text array and convert every lower-case letter to upper-case, as well as
     // convert every whitespace to a comma. 
