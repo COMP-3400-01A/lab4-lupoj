@@ -9,6 +9,8 @@
 int main(int argc, const char* argv[]) {
     char text[100];
 
+    // If there are already arguments, copy it to the text array
+    // Else, take user input and copy it to the text array
     if (argc > 1) {
         strncpy(text, argv[1], sizeof(text) - 1);
         text[sizeof(text) - 1] = '\0';
@@ -20,6 +22,8 @@ int main(int argc, const char* argv[]) {
         text[strcspn(text, "\n")] = '\0';
     }
 
+    // Iterate through text array and convert every lower-case letter to upper-case, as well as
+    // convert every whitespace to a comma. 
     for (int i = 0; text[i] != '\0'; i++) {
         if (islower(text[i])) {
             text[i] = toupper(text[i]);
@@ -29,6 +33,7 @@ int main(int argc, const char* argv[]) {
         }
     }
 
+    // Print out text array
     printf("%s\n", text);
     return 0;
 }
